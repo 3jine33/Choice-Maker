@@ -1,0 +1,15 @@
+<form method="post" enctype="multipart/form-data" action="{% url 'new' %}" novalidate>
+    {%csrf_token%}
+    
+    <div class="form-group">
+        <label for="title">title:</label>
+        <input type="text" class="form-control" name="title">
+    </div>
+    {% for i in range(1, 10) %}
+    <div class="form-group">
+        <input type="file" name="image" size="50" maxlength="50">
+    </div>
+    <br>
+    {% endfor %}
+        <input class="btn btn-dark" type="submit" value="완료" >
+</form>

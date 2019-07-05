@@ -1,0 +1,21 @@
+
+
+{% extends 'base.html' %}
+{% block contents %}
+
+<div class="search">
+    <input type="text" placeholder="검색어 입력">
+    <button>검색</button>
+</div>
+
+<div class="main">
+<a href="{% url 'food' %}"><div class="box">
+    <div class="pixel-block"></div>   
+        <div class="category">
+            <div class="name">뭐 먹을래?</div>
+            <div class="explain">음식 고르기 카테고리</div>
+        </div>
+    </div>
+</div></a>
+</div>
+{% endblock %}
