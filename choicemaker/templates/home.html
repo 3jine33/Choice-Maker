@@ -1,21 +1,59 @@
-
-
-{% extends 'base.html' %}
-{% block contents %}
-
-<div class="search">
-    <input type="text" placeholder="검색어 입력">
-    <button>검색</button>
-</div>
-
-<div class="main">
-<a href="{% url 'food' %}"><div class="box">
-    <div class="pixel-block"></div>   
-        <div class="category">
-            <div class="name">뭐 먹을래?</div>
-            <div class="explain">음식 고르기 카테고리</div>
-        </div>
+<style>
+    body{
+        text-align: center;
+    }
+    .container{
+        position:relative;
+        width:100%;
+        height:90%;
+    }
+    .main{
+        position:absolute;
+        top:25%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<body>
+    {% extends 'base.html' %}
+    {% block contents %}
+<div class="container">
+    <div class="main">
+        <table>
+        <tr>
+        <td><a href="{% url 'food' %}">
+            <div class="box">
+                <div class="pixel-block"></div>   
+                    <div class="category">
+                        <div class="name">뭐 먹을래?</div></a>
+                        <div class="explain">음식 고르기 카테고리</div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <a href="{% url 'movie' %}">
+                <div class="box">
+                    <div class="pixel-block"></div>   
+                        <div class="category">
+                            <div class="name">뭐 볼래?</div></a>
+                            <div class="explain">영화 고르기 카테고리</div>
+                        </div>
+                    </div>
+                </div>
+        </td>
+        <td>
+            <a href="{% url 'new' %}">
+                <div class="box">
+                    <div class="pixel-block"></div>   
+                        <div class="category">
+                            <div class="name">직접 해볼래?</div></a>
+                            <div class="explain">나만의 카테고리 만들기</div>
+                        </div>
+                    </div>
+        </td>
+        </table>
     </div>
-</div></a>
 </div>
-{% endblock %}
+    {% endblock %}
+</body>

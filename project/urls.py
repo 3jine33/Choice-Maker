@@ -19,10 +19,14 @@ import choicemaker.views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', choicemaker.views.home, name="home"),
     path('food/', choicemaker.views.food, name="food"),
     path('new/', choicemaker.views.new, name="new"),
     path('aboutus/', choicemaker.views.aboutus, name="aboutus"),
+   
+    path('movie/', choicemaker.views.movie, name="movie"),
+    path('newresult/', choicemaker.views.new, name="newresult"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

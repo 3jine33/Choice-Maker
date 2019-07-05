@@ -1,10 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 import random
+from .models import Photo
+
 def home(request):
     return render(request, 'home.html')
 
 def aboutus(request):
     return render(request, 'aboutus.html')
+
+def movie(request) :
+    value = 'movie'
+    movieList = {}
+
+    movieList[1] = '토이스토리'
+    movieList[2] = '스파이더맨'
+    movieList[3] = '코코'
+    movieList[4] = '레미제라블'
+    movieList[5] = '타이타닉'
+    movieList[6] = '알라딘'
+    movieList[7] = '겨울왕국'
+    movieList[8] = '라푼젤'
+    i = random.randint(1,8)
+
+    img_name = movieList[i] + ".jpg"
+
+    return render(request, 'movie.html', {'movieList' : movieList[i], 'img_name' : img_name})
+
 
 def food(request):
     value = 'food'
@@ -23,31 +46,49 @@ def food(request):
     foodList[12] = '제육볶음'
     foodList[13] = '짜장면'
     foodList[14] = '초밥'
-    foodList[15] = '토마토 파스타'
-    foodList[16] = '양념치킨'
-    foodList[17] = '순대국'
-    foodList[18] = '짬뽕'
-    foodList[19] = '초밥'
-    foodList[20] = '팟타이'
-    foodList[21] = '팬케이크'
-    foodList[22] = '해장국'
-    foodList[23] = '제육볶음'
-    foodList[24] = '라면'
-    foodList[25] = '삼겹살'   
-    foodList[26] = '햄버거' 
-    i = random.randint(1,4)
+    foodList[15] = '양념치킨'
+    foodList[16] = '순대국'
+    foodList[17] = '짬뽕'
+    foodList[18] = '초밥'
+    foodList[19] = '팟타이'
+    foodList[20] = '팬케이크'
+    foodList[21] = '해장국'
+    foodList[22] = '제육볶음'
+    foodList[23] = '라면'
+    foodList[24] = '삼겹살'   
+    foodList[25] = '햄버거' 
+    i = random.randint(1,25)
 
     img_name = foodList[i] + ".PNG"
 
-    return render(request,'food.html',{ 'img_name' : img_name})
-#랜덤 
+    return render(request,'food.html',{'foodList':foodList[i], 'img_name' : img_name})
 
 def new (request):
-    if request.method == 'POST' and request.FILES['image']:
-        myfile = request.FILES['image']
+    if request.method == 'POST' :
+
+        myfile1 = request.FILES.get('image1', '')
+        myfile2 = request.FILES.get('image2', '')
+        myfile3 = request.FILES.get('image3', '')
+        myfile4 = request.FILES.get('image4', '')
+
+        picturelist = {}
+        picturelist[1] = myfile1
+        picturelist[2] = myfile2
+        picturelist[3] = myfile3
+        picturelist[4] = myfile4
+
+        i = random.randint(1,4)
+        myfile = picturelist[i]
+
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
-        return render(request, 'new.html', {'uploaded_file_url': uploaded_file_url})
-    return render(request, 'new.html')
+        return render(request, 'newresult.html', {'uploaded_file_url': uploaded_file_url})
+    else :
+        return render(request, 'new.html')
+
+
+def photo(request):
+    photo = Photo.objects
+    return render(request, 'home.html',{'photo':photo})
 

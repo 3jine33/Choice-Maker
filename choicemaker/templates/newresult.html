@@ -1,8 +1,12 @@
-
 <style>
     body{
         text-align: center;
     }
+
+    img{
+        width:"40%";
+    }
+
     .button{
         border:2px #ddb9ea solid;
         border-radius:5px;
@@ -17,20 +21,19 @@
         color:white;
         padding: 10px 20px;
     }
-    h1{color:#986fa7;}
 </style>
+
 <body>
     {% extends 'base.html' %}
     {% block contents %}
     {% load staticfiles %}
-            <br><br>
-            <h1>결정장애 당신을 위한 오늘의 식사!</h1>
-            <br><br>
-            <img src="/static/foodimg/{{img_name}}" width="50%" alt="{{img_name}}"/>
-            <br>
-            <h3>{{foodList}}</h3>
-            <br><br>
-            <input type="button" class="button" value="RANDOM" onclick="location.reload()">
-            <br><br>
-    {% endblock %}   
+    <br><br>
+    <h1>오늘 당신의 선택은!</h1>
+
+    <img src = {{ uploaded_file_url}}>
+    <br>
+
+    <input type="button" class="button" value="RANDOM" onclick="location.reload()">
+    <br><br>
+    {% endblock %}
 </body>

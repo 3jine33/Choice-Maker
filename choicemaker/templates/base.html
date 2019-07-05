@@ -1,14 +1,17 @@
-<link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Sunflower:300,700&display=swap" rel="stylesheet">
+{% load staticfiles %}
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style type="text/css">
     *{margin:0;padding:0;}
+    a{text-decoration:none !important;}
 /*베이스*/
     .logo{
         margin:auto;
         width:400px;
         height:30px;
         text-align:center;
-        padding:20px 0px 0px 0px;
+        padding:70px 0px 0px 0px;
         font-family: "Press Start 2P";
+        color:#986fa7;
     }
     .navbar_box{
         border-bottom: 3px solid #ddb9ea;
@@ -47,12 +50,9 @@
         width: 250px;
         padding: 15px;
     }
-    .main{
-        margin: auto;
-        width:90%;
-    }
     .box {
         display: inline-box;
+        width:250px;
         margin: 10px;
     }
     .category {
@@ -62,29 +62,30 @@
     .category .name{
         text-align:center;
         padding:13px 0px 0px 0px;
-        font-family:"sunflower;"
+    }
+    .category a{
+        color:#986fa7;
+        font-weight:bold;
     }
     .category .explain{
         position:relative;
         z-index:-1;
-        padding: 35px 0px 3px 15px;
+        padding: 30px 0px 3px 15px;
         background-color:#ddb9ea;
         border:3px solid #ddb9ea;
         border-radius:10px;
         color:rgb(102, 94, 107);
-        font-family:"sunflower;"
     }
 </style>
 
+<title>Choice Maker</title>
+<div class="logo"> CHOICE MAKER </div>
 
-<div class="logo">
-    <a href="{ % url 'home.html' %}">CHOICE MAKER</a>
-</div>
 <div class="navbar_box">
     <ul class="navbar">
-        <a href="{ % url 'aboutus.html' %}"><li>ABOUT US</li></a>
-        <a href="{ % url 'home.html' %}"><li>CATEGORIES</li></a>
-        <a href="{ % url '' %}"><li>CREATE NEW</li></a>
+        <a href="{% url 'aboutus' %}"><li>ABOUT US</li></a>
+        <a href="{% url 'home' %}"><li>CATEGORIES</li></a>
+        <a href="{% url 'new' %}"><li>CREATE NEW</li></a>
     </ul>
 </div>
 
